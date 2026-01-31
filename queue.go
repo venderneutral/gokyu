@@ -1,5 +1,40 @@
-// Package goqueue provides a cloud-agnostic message queue abstraction
+// Package gokyu provides a cloud-agnostic message queue abstraction
 // using AMQP 1.0 protocol for communication with various cloud providers.
+//
+// gokyu allows you to write messaging code once and run it against different
+// cloud message brokers (Azure Service Bus, Amazon MQ) without changing your
+// application code. This reduces vendor lock-in and makes it easy to switch
+// providers or run in multi-cloud environments.
+//
+// # Quick Start
+//
+// Import the package and at least one provider:
+//
+//	import (
+//	    "github.com/venderneutral/gokyu"
+//	    _ "github.com/venderneutral/gokyu/providers" // imports all providers
+//	)
+//
+// Create a client and start publishing/subscribing:
+//
+//	client, err := gokyu.NewClient(&gokyu.Config{
+//	    Provider:         gokyu.ProviderAzure,
+//	    ConnectionString: "amqps://...",
+//	    Topic:            "my-topic",
+//	    Subscription:     "my-subscription",
+//	})
+//
+//	publisher, _ := client.NewPublisher(ctx)
+//	publisher.Publish(ctx, gokyu.NewMessage([]byte("hello")))
+//
+//	subscriber, _ := client.NewSubscriber(ctx)
+//	msg, _ := subscriber.Receive(ctx)
+//	subscriber.Ack(ctx, msg)
+//
+// # Switching Providers
+//
+// To switch from Azure to Amazon MQ, simply change the Provider and
+// ConnectionString in your configuration. Your business logic remains unchanged.
 package gokyu
 
 import (
@@ -10,7 +45,10 @@ import (
 type Provider string
 
 const (
-	ProviderAzure    Provider = "azure"
+	// ProviderAzure selects Azure Service Bus as the message broker.
+	ProviderAzure Provider = "azure"
+
+	// ProviderAmazonMQ selects Amazon MQ (ActiveMQ) as the message broker.
 	ProviderAmazonMQ Provider = "amazonmq"
 )
 

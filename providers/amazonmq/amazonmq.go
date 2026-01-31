@@ -1,4 +1,29 @@
 // Package amazonmq provides Amazon MQ (ActiveMQ) implementation for gokyu.
+//
+// This package implements the gokyu.Publisher and gokyu.Subscriber interfaces
+// for Amazon MQ using AMQP 1.0 protocol.
+//
+// # Connection String Format
+//
+// Amazon MQ connection strings should follow this format:
+//
+//	amqps://<username>:<password>@<broker-id>.mq.<region>.amazonaws.com:5671
+//
+// # Virtual Topics
+//
+// For pub/sub messaging with durable subscriptions, this package uses
+// ActiveMQ Virtual Topics pattern:
+//   - Publisher sends to: "topic://<topic-name>" or just "<queue-name>"
+//   - Subscriber receives from: "Consumer.<subscription>.VirtualTopic.<topic>"
+//
+// The virtual topic path is automatically constructed by this package
+// when you provide Topic and Subscription in the configuration.
+//
+// # Usage
+//
+// Import this package to register the Amazon MQ provider:
+//
+//	import _ "github.com/venderneutral/gokyu/providers/amazonmq"
 package amazonmq
 
 import (

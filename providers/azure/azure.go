@@ -1,4 +1,28 @@
 // Package azure provides Azure Service Bus implementation for gokyu.
+//
+// This package implements the gokyu.Publisher and gokyu.Subscriber interfaces
+// for Azure Service Bus using AMQP 1.0 protocol.
+//
+// # Connection String Format
+//
+// Azure Service Bus connection strings should follow this format:
+//
+//	amqps://<policy-name>:<access-key>@<namespace>.servicebus.windows.net
+//
+// # Topic Subscriptions
+//
+// For pub/sub messaging, Azure Service Bus uses the following addressing:
+//   - Topic: "my-topic"
+//   - Subscription: "my-topic/Subscriptions/my-subscription"
+//
+// The subscription path is automatically constructed by this package
+// when you provide Topic and Subscription in the configuration.
+//
+// # Usage
+//
+// Import this package to register the Azure provider:
+//
+//	import _ "github.com/venderneutral/gokyu/providers/azure"
 package azure
 
 import (
