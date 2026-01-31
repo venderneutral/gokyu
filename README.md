@@ -1,5 +1,8 @@
 # gokyu
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/venderneutral/gokyu.svg)](https://pkg.go.dev/github.com/venderneutral/gokyu)
+[![Go Report Card](https://goreportcard.com/badge/github.com/venderneutral/gokyu)](https://goreportcard.com/report/github.com/venderneutral/gokyu)
+
 A cloud-agnostic message queue library for Go using AMQP 1.0 protocol. Switch between cloud providers without changing your application code.
 
 ## Supported Providers
@@ -11,8 +14,28 @@ A cloud-agnostic message queue library for Go using AMQP 1.0 protocol. Switch be
 
 ## Installation
 
+Requires Go 1.21 or later.
+
 ```bash
 go get github.com/venderneutral/gokyu
+```
+
+To install with a specific provider:
+
+```bash
+# Install the core package with all providers
+go get github.com/venderneutral/gokyu
+go get github.com/venderneutral/gokyu/providers
+```
+
+Or install only the provider you need:
+
+```bash
+# Azure Service Bus only
+go get github.com/venderneutral/gokyu/providers/azure
+
+# Amazon MQ only
+go get github.com/venderneutral/gokyu/providers/amazonmq
 ```
 
 ## Quick Start
