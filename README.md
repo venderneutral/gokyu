@@ -3,7 +3,17 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/venderneutral/gokyu.svg)](https://pkg.go.dev/github.com/venderneutral/gokyu)
 [![Go Report Card](https://goreportcard.com/badge/github.com/venderneutral/gokyu)](https://goreportcard.com/report/github.com/venderneutral/gokyu)
 
-A cloud-agnostic message queue library for Go using AMQP 1.0 protocol. Switch between cloud providers without changing your application code.
+gokyu is a cloud-agnostic message queue library for Go built on the AMQP 1.0 protocol.
+It provides a single, consistent API for interacting with message queues across
+different cloud providers and messaging platforms.
+
+The goal of gokyu is to eliminate vendor lock-in by allowing you to switch between
+queue backends without changing your application code. Provider-specific details
+are handled internally, letting you focus on your business logic rather than
+infrastructure differences.
+
+gokyu is designed to be simple, explicit, and production-friendly, making it suitable
+for both cloud-native applications and portable workloads.
 
 <p align="center">
   <img src="assets/gokyu-cover.png" alt="gokyu banner">
