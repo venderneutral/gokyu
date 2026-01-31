@@ -5,6 +5,10 @@
 
 A cloud-agnostic message queue library for Go using AMQP 1.0 protocol. Switch between cloud providers without changing your application code.
 
+<p align="center">
+  <img src="assets/gokyu-cover.png" alt="gokyu banner">
+</p>
+
 ## Supported Providers
 
 | Provider | Service | Status |
